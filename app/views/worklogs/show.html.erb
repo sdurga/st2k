@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Who:</b>
+  <%= @worklog.who %>
+</p>
+
+<p>
+  <b>Work progress this week:</b>
+  <%= @worklog.work_progress_this_week %>
+</p>
+
+<p>
+  <b>Concerns:</b>
+  <%= @worklog.concerns %>
+</p>
+
+<p>
+  <b>Filed on:</b>
+  <%= @worklog.filed_on %>
+</p>
+
+
+<%= link_to 'Edit', edit_worklog_path(@worklog) %> |
+<%= link_to 'Back', worklogs_path %>

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  who: MyString
+  work_progress_this_week: MyString
+  concerns: MyString
+  filed_on: 2012-02-15 10:58:31
+
+two:
+  who: MyString
+  work_progress_this_week: MyString
+  concerns: MyString
+  filed_on: 2012-02-15 10:58:31

@@ -1,0 +1,33 @@
+<%= form_for(@worklog) do |f| %>
+  <% if @worklog.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@worklog.errors.count, "error") %> prohibited this worklog from being saved:</h2>
+
+      <ul>
+      <% @worklog.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :who %><br />
+    <%= f.text_field :who %>
+  </div>
+  <div class="field">
+    <%= f.label :work_progress_this_week %><br />
+    <%= f.text_field :work_progress_this_week %>
+  </div>
+  <div class="field">
+    <%= f.label :concerns %><br />
+    <%= f.text_field :concerns %>
+  </div>
+  <div class="field">
+    <%= f.label :filed_on %><br />
+    <%= f.datetime_select :filed_on %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

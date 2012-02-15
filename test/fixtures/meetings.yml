@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  who: MyString
+  what: MyText
+  requested_date: 2012-02-15 10:54:59
+
+two:
+  who: MyString
+  what: MyText
+  requested_date: 2012-02-15 10:54:59
