@@ -16,7 +16,7 @@ Then /^I should be able to create and save new worklogs$/ do
   fill_in 'Who', with: 'Name'
   fill_in 'Work progress this week', with: 'work this week'
   fill_in 'Concerns', with: 'concerns'
-  fill_in 'Filed on', with:Time.now
+  select_datetime('Filed on',with:DateTime.now.to_s)
   click_button 'Create Worklog'
 
 end
