@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120215165831) do
+ActiveRecord::Schema.define(:version => 20120221204754) do
 
   create_table "meetings", :force => true do |t|
     t.string   "who"
@@ -41,9 +41,9 @@ ActiveRecord::Schema.define(:version => 20120215165831) do
 
   create_table "worklogs", :force => true do |t|
     t.string   "who"
-    t.string   "work_progress_this_week"
-    t.string   "concerns"
-    t.datetime "filed_on"
+    t.text     "work_progress_this_week"
+    t.text     "concerns"
+    t.date     "time_period"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

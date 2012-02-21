@@ -13,6 +13,8 @@
   <% if user_signed_in? %>
       <table>
         <tr>
+          <td><%= link_to('Meetings', meetings_path, :method => :get) %></td>
+          <td><%= link_to('Worklogs', worklogs_path, :method => :get) %></td>
           <td><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></td>
         </tr>
       </table>

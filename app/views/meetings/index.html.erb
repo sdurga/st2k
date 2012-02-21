@@ -1,10 +1,11 @@
-<h1>Listing meetings</h1>
+<h1>Meeting Requests</h1>
 
 <table>
   <tr>
     <th>Who</th>
     <th>What</th>
-    <th>Requested date</th>
+    <th>Date</th>
+    <th>Time</th>
     <th></th>
     <th></th>
     <th></th>
@@ -14,7 +15,8 @@
   <tr>
     <td><%= meeting.who %></td>
     <td><%= meeting.what %></td>
-    <td><%= meeting.requested_date %></td>
+    <td><%= meeting.requested_date.strftime("%m/%d/%Y") %></td>
+    <td><%= meeting.requested_date.strftime("at %I:%M%p")%></td>
     <td><%= link_to 'Show', meeting %></td>
     <td><%= link_to 'Edit', edit_meeting_path(meeting) %></td>
     <td><%= link_to 'Destroy', meeting, confirm: 'Are you sure?', method: :delete %></td>

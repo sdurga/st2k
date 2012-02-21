@@ -1,11 +1,11 @@
-<h1>Listing worklogs</h1>
+<h1>ERIA Student Worklogs</h1>
 
 <table>
   <tr>
     <th>Who</th>
     <th>Worked On </th>
     <th>Issues/Concerns</th>
-    <th>Filed on</th>
+    <th>Time Period (Week of)</th>
     <th></th>
     <th></th>
     <th></th>
@@ -16,7 +16,7 @@
     <td><%= worklog.who %></td>
     <td><%= worklog.work_progress_this_week %></td>
     <td><%= worklog.concerns %></td>
-    <td><%= worklog.filed_on %></td>
+    <td><%= worklog.time_period %></td>
     <td><%= link_to 'Show', worklog %></td>
     <td><%= link_to 'Edit', edit_worklog_path(worklog) %></td>
     <td><%= link_to 'Destroy', worklog, confirm: 'Are you sure?', method: :delete %></td>

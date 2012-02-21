@@ -17,15 +17,15 @@
   </div>
   <div class="field">
     <%= f.label :work_progress_this_week %><br />
-    <%= f.text_field :work_progress_this_week %>
+    <%= f.text_area :work_progress_this_week %>
   </div>
   <div class="field">
     <%= f.label :concerns %><br />
-    <%= f.text_field :concerns %>
+    <%= f.text_area :concerns %>
   </div>
   <div class="field">
-    <%= f.label :filed_on %><br />
-    <%= f.datetime_select :filed_on %>
+    <%= f.label :time_period %><br />
+    <%= f.datetime_select :time_period %>
   </div>
   <div class="actions">
     <%= f.submit %>

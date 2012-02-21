@@ -1,7 +1,7 @@
 ScheduleTron2000::Application.routes.draw do
-  resources :worklogs
+  resources :worklogs,:meetings
 
-  resources :meetings
+  #resources :meetings
 
   devise_for :users
 
