@@ -4,7 +4,6 @@ require 'date'
 describe Worklog do
   describe 'time_period' do
     let(:user) {Factory :user }
-
     let(:worklog) {Worklog.new }
 
     it 'should be required' do
@@ -34,6 +33,15 @@ describe Worklog do
      worklog2.valid?
      worklog2.errors_on(:time_period).should == ["worklog saved for this time period"]
     end
+  end
+  describe 'give_mondays_within_a_given_date_range' do
+    let(:user) {Factory :user }
+    let(:worklog) {Worklog.new }
 
+    it'returns an array of mondays within date1 and date2' do
+      date1=Date.today-5
+      date2=Date.today
+      worklog.give_mondays_within_a_given_date_range(date1,date2).should == [Date.parse("Mon, 27 Feb 2012")]
+    end
   end
 end

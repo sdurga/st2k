@@ -10,4 +10,8 @@ validate :time_period_should_be_beginning_of_week
       end
     end
   end
+  def give_mondays_within_a_given_date_range(startdate,enddate)
+    datearr=(startdate.to_date..enddate.to_date)
+    datearr.select{|d| d.monday?}
+  end
 end
