@@ -35,23 +35,21 @@ describe Worklog do
     end
   end
   describe 'mondays_in_a_date_range' do
-    it'returns an array of mondays within date1 and date2' do
-      startdate = Date.parse('1 Jan 2012')
-      enddate = startdate + 8
-      Worklog.mondays_in_a_date_range(startdate,enddate).should == [Date.parse('Mon, 02 Jan 2012'), Date.parse('Mon, 09 Jan 2012')]
+    let(:user1) { Factory :user }
+    let(:user2) { Factory :user }
+    let!(:worklog1) { Worklog.create(:time_period => Date.parse('05 Mar 2012'), :user =>user1) }
+    let!(:worklog2) { Worklog.create(:time_period => Date.parse('19 Mar 2012'), :user =>user2) }
+
+    it'returns an array of mondays within date1 and date2 not filled by user1' do
+      startdate = Date.parse('1 Mar 2012')
+      enddate = Date.parse('31 Mar 2012')
+      user1.mondays_in_a_date_range(startdate,enddate).should == [Date.parse('Mon, 12 Mar 2012'),Date.parse('Mon, 19 Mar 2012'),Date.parse('Mon, 26 Mar 2012')]
     end
+
     it 'should return an empty array when no mondays are present' do
       startdate = Date.parse('29 Feb 2012')
       enddate = startdate + 3
-      Worklog.mondays_in_a_date_range(startdate,enddate).should be_empty
-    end
-  end
-  describe 'worklog time period for a user' do
-    it'should disply only dates that hav not been already filled for' do
-      startdate = Date.parse('1 Jan 2012')
-      enddate = startdate + 8
-      datearr = Worklog.mondays_in_a_date_range(startdate,enddate)
-      User.worklog_time_period(datearr).should be_empty
+      user1.mondays_in_a_date_range(startdate,enddate).should be_empty
     end
   end
 end
