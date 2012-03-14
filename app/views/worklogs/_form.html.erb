@@ -25,7 +25,7 @@
   </div>
   <div class="field">
     <%= f.label :time_period %><br />
-    <%= f.date_select :time_period %>
+    <%= f.select("time_period",current_user.valid_weeks_within_a_range("1 Mar 2012","31 Mar 2012").collect{|x| ["Week of "+x.to_s, x]}, {:include_blank => 'Select week'}) %>
   </div>
   <div class="actions">
     <%= f.submit %>

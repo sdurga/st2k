@@ -34,22 +34,22 @@ describe Worklog do
      worklog2.errors_on(:time_period).should == ["worklog saved for this time period"]
     end
   end
-  describe 'mondays_in_a_date_range' do
+  describe 'valid_weeks_within_a_range(' do
     let(:user1) { Factory :user }
     let(:user2) { Factory :user }
     let!(:worklog1) { Worklog.create(:time_period => Date.parse('05 Mar 2012'), :user =>user1) }
     let!(:worklog2) { Worklog.create(:time_period => Date.parse('19 Mar 2012'), :user =>user2) }
 
-    it'returns an array of mondays within date1 and date2 not filled by user1' do
+    it'returns an array of un-filed mondays for a user within date1 and date2' do
       startdate = Date.parse('1 Mar 2012')
       enddate = Date.parse('31 Mar 2012')
-      user1.mondays_in_a_date_range(startdate,enddate).should == [Date.parse('Mon, 12 Mar 2012'),Date.parse('Mon, 19 Mar 2012'),Date.parse('Mon, 26 Mar 2012')]
+      user1.valid_weeks_within_a_range(startdate,enddate).should == [Date.parse('Mon, 12 Mar 2012'),Date.parse('Mon, 19 Mar 2012'),Date.parse('Mon, 26 Mar 2012')]
     end
 
     it 'should return an empty array when no mondays are present' do
       startdate = Date.parse('29 Feb 2012')
       enddate = startdate + 3
-      user1.mondays_in_a_date_range(startdate,enddate).should be_empty
+      user1.valid_weeks_within_a_range(startdate,enddate).should be_empty
     end
   end
 end

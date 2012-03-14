@@ -16,7 +16,20 @@ Then /^I should be able to create and save new worklogs$/ do
   fill_in 'Who', with: 'Name'
   fill_in 'Work progress this week', with: 'work this week'
   fill_in 'Concerns', with: 'concerns'
-  select_date('Time period',with:Date.today.beginning_of_week.to_s)
+  select('Time period',with:'')
   click_button 'Create Worklog'
 
 end
+
+Given /^I am logged in$/ do
+  pending # express the regexp above with the code you wish you had
+end
+
+Given /^I create and save a new worklog$/ do
+  pending # express the regexp above with the code you wish you had
+end
+
+Then /^The last worklog listed should be my me$/ do
+  pending # express the regexp above with the code you wish you had
+end
+
