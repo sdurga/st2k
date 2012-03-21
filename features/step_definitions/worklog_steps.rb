@@ -13,23 +13,21 @@ end
 
 
 Then /^I should be able to create and save new worklogs$/ do
+  #save_and_open_page
   fill_in 'Who', with: 'Name'
   fill_in 'Work progress this week', with: 'work this week'
   fill_in 'Concerns', with: 'concerns'
-  select('Time period',with:'')
+  select('Week of 2012-03-19',from:'Time period')
   click_button 'Create Worklog'
-
+  current_path = URI.parse(current_url).path
+  current_path.should == worklog_path(Worklog.last.id)
 end
 
-Given /^I am logged in$/ do
-  pending # express the regexp above with the code you wish you had
+Then /^The last worklog listed should be by me$/ do
+  w = Worklog.last
+  w.time_period.should ==Date.parse('Mon, 19 Mar 2012')
+  w.user_id.should == @user.id
 end
 
-Given /^I create and save a new worklog$/ do
-  pending # express the regexp above with the code you wish you had
-end
 
-Then /^The last worklog listed should be my me$/ do
-  pending # express the regexp above with the code you wish you had
-end
 
