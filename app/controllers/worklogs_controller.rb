@@ -43,6 +43,7 @@ before_filter :authenticate_user!
   # POST /worklogs.json
   def create
     @worklog = Worklog.new(params[:worklog])
+    @worklog.user_id = current_user.id
 
     respond_to do |format|
       if @worklog.save
