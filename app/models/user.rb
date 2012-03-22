@@ -8,6 +8,8 @@ has_many :worklogs
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
     def valid_weeks_within_a_range(startdate,enddate)
+      startdate = startdate.beginning_of_week
+      enddate = enddate.beginning_of_week
       worklog_arr = worklogs
       time_period = worklog_arr.collect{|x| x.time_period}
       datearr=(startdate.to_date..enddate.to_date)

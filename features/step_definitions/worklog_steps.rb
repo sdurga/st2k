@@ -29,11 +29,15 @@ Given /^I create a new worklog$/ do
   fill_in 'Concerns', with: 'concerns'
   select('Week of 2012-03-19',from:'Time period')
   click_button 'Create Worklog'
-  Worklog.where(:user_id => @user.id).last.should_not be nil
-end
+  end
 
 Then /^The last worklog in the database should be saved by me$/ do
-
+ w = Worklog.last
+ w.user_id.should == @user.id
+ w.who.should == 'Name'
+ w.time_period.should == Date.parse('Mon, 19 Mar 2012')
+ w.work_progress_this_week.should == 'work this week'
+ w.concerns.should == 'concerns'
 end
 
 
