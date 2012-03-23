@@ -43,13 +43,13 @@ describe Worklog do
     it'returns an array of un-filed mondays for a user within date1 and date2' do
       startdate = Date.parse('1 Mar 2012')
       enddate = Date.parse('31 Mar 2012')
-      user1.valid_weeks_within_a_range(startdate,enddate).should == [Date.parse('Mon, 12 Mar 2012'),Date.parse('Mon, 19 Mar 2012'),Date.parse('Mon, 26 Mar 2012')]
+      user1.valid_weeks_within_a_range(startdate,enddate).should == [Date.parse('Mon, 27 Feb 2012'),Date.parse('Mon, 12 Mar 2012'),Date.parse('Mon, 19 Mar 2012'),Date.parse('Mon, 26 Mar 2012')]
     end
 
-    it 'should return an empty array when no mondays are present' do
+    it 'should return only one monday when the start and enddates fall in the same week' do
       startdate = Date.parse('29 Feb 2012')
       enddate = startdate + 3
-      user1.valid_weeks_within_a_range(startdate,enddate).should be_empty
+      user1.valid_weeks_within_a_range(startdate,enddate).count.should == 1
     end
   end
 end
