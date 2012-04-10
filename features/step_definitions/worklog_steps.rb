@@ -7,12 +7,13 @@ Given /^That I am logged in$/ do
   end
 
 And /^I visit the worklogs page$/ do
- visit new_worklog_path
+ visit worklogs_path
 end
 
 
 Then /^I should be able to create and save new worklogs$/ do
   #save_and_open_page
+  visit new_worklog_path
   fill_in 'Who', with: 'Name'
   fill_in 'Work progress this week', with: 'work this week'
   fill_in 'Concerns', with: 'concerns'
@@ -40,5 +41,9 @@ Then /^The last worklog in the database should be saved by me$/ do
  w.concerns.should == 'concerns'
 end
 
+Then /^I should see only my worklogs$/ do
+visit worklogs_path
+
+end
 
 

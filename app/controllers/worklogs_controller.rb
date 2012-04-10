@@ -4,7 +4,7 @@ before_filter :authenticate_user!
   # GET /worklogs
   # GET /worklogs.json
   def index
-    @worklogs = Worklog.all
+    @worklogs = current_user.worklogs.all
 
     respond_to do |format|
       format.html # index.html.erb

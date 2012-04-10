@@ -4,8 +4,10 @@ before_filter :authenticate_user!
   # GET /meetings
   # GET /meetings.json
 
+  # GET /meetings/1
+  # GET /meetings/1.json
   def index
-    @meetings = Meeting.all
+    @meetings = current_user.meetings.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,8 +15,6 @@ before_filter :authenticate_user!
     end
   end
 
-  # GET /meetings/1
-  # GET /meetings/1.json
   def show
     @meeting = Meeting.find(params[:id])
 
@@ -44,6 +44,7 @@ before_filter :authenticate_user!
   # POST /meetings.json
   def create
     @meeting = Meeting.new(params[:meeting])
+    @meeting.user_id = current_user.id
 
     respond_to do |format|
       if @meeting.save

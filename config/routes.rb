@@ -1,11 +1,11 @@
 ScheduleTron2000::Application.routes.draw do
-  resources :worklogs,:meetings
 
+ resources :worklogs,:meetings
   #resources :meetings
-
   devise_for :users
 
-  # The priority is based upon order of creation:
+  
+    # The priority is based upon order of creation:
   # first created -> highest priority.
 
   # Sample of regular route:
