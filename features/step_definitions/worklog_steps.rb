@@ -42,8 +42,9 @@ Then /^The last worklog in the database should be saved by me$/ do
 end
 
 Then /^I should see only my worklogs$/ do
-visit worklogs_path
-
+  worklog1 = Factory(:worklog)
+  worklog2 = Factory(:worklog, user_id: @user.id)
+  assert_equal false, worklog1.user_id == worklog2.user_id 
 end
 
 

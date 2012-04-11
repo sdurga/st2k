@@ -44,7 +44,7 @@ before_filter :authenticate_user!
   def create
     @worklog = Worklog.new(params[:worklog])
     @worklog.user_id = current_user.id
-
+    @worklog.who = current_user.email
     respond_to do |format|
       if @worklog.save
         format.html { redirect_to @worklog, notice: 'Worklog was successfully created.' }
