@@ -2,10 +2,9 @@
 
 <table>
   <tr>
-    <th>Who</th>
+    <th> Week of</th>
     <th>Worked On </th>
     <th>Issues/Concerns</th>
-    <th>Time Period (Week of)</th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,10 +12,9 @@
 
 <% @worklogs.each do |worklog| %>
   <tr>
-    <td><%= worklog.who %></td>
+    <td><%= worklog.time_period %></td>
     <td><%= worklog.work_progress_this_week %></td>
     <td><%= worklog.concerns %></td>
-    <td><%= worklog.time_period %></td>
     <td><%= link_to 'Show', worklog %></td>
     <td><%= link_to 'Edit', edit_worklog_path(worklog) %></td>
     <td><%= link_to 'Destroy', worklog, confirm: 'Are you sure?', method: :delete %></td>

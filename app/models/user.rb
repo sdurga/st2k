@@ -5,9 +5,8 @@ has_many :meetings
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :admin, :firstname, :lastname
     def valid_weeks_within_a_range(startdate,enddate)
       startdate = startdate.beginning_of_week
       enddate = enddate.beginning_of_week
@@ -17,6 +16,7 @@ has_many :meetings
       datearr = datearr.select{|d| d.monday?}
       datearr - time_period
     end
+
 end
 
 

@@ -4,8 +4,11 @@ before_filter :authenticate_user!
   # GET /worklogs
   # GET /worklogs.json
   def index
-    @worklogs = current_user.worklogs.all
-
+    if current_user.admin? 
+      @worklogs = Worklog.all
+       else 
+      @worklogs = current_user.worklogs.all
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @worklogs }
@@ -44,7 +47,7 @@ before_filter :authenticate_user!
   def create
     @worklog = Worklog.new(params[:worklog])
     @worklog.user_id = current_user.id
-    @worklog.who = current_user.email
+    @worklog.who = current_user.lastname
     respond_to do |format|
       if @worklog.save
         format.html { redirect_to @worklog, notice: 'Worklog was successfully created.' }

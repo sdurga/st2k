@@ -7,7 +7,11 @@ before_filter :authenticate_user!
   # GET /meetings/1
   # GET /meetings/1.json
   def index
-    @meetings = current_user.meetings.all
+ if current_user.admin? 
+      @meetings = Meeting.all
+       else 
+      @meetings = current_user.meetings.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -45,6 +49,7 @@ before_filter :authenticate_user!
   def create
     @meeting = Meeting.new(params[:meeting])
     @meeting.user_id = current_user.id
+    @meeting.who = current_user.firstname
 
     respond_to do |format|
       if @meeting.save

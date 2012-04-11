@@ -2,17 +2,14 @@
 
 <table>
   <tr>
-    <th>Who</th>
-    <th>What</th>
-    <th>Date</th>
-    <th></th>
+    <th>Subject</th>
+    <th>Proposed Date/Time</th>
     <th></th>
     <th></th>
   </tr>
 
 <% @meetings.each do |meeting| %>
   <tr>
-    <td><%= meeting.who %></td>
     <td><%= meeting.what %></td>
     <td><%= meeting.proposed_date_for_meeting.strftime("%m/%d/%Y at %I:%M%p") %></td>
     <td><%= link_to 'Show', meeting %></td>
