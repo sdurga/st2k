@@ -4,11 +4,13 @@ before_filter :authenticate_user!
   # GET /worklogs
   # GET /worklogs.json
   def index
-    if current_user.admin? 
+    if current_user.admin?
       @worklogs = Worklog.all
        else 
       @worklogs = current_user.worklogs.all
     end
+
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @worklogs }

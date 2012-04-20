@@ -14,7 +14,6 @@ end
 Then /^I should be able to create and save new worklogs$/ do
   #save_and_open_page
   visit new_worklog_path
-  fill_in 'Who', with: 'Name'
   fill_in 'Work progress this week', with: 'work this week'
   fill_in 'Concerns', with: 'concerns'
   select('Week of 2012-03-19',from:'Time period')
@@ -25,7 +24,6 @@ end
 
 Given /^I create a new worklog$/ do
   visit new_worklog_path
-  fill_in 'Who', with: 'Name'
   fill_in 'Work progress this week', with: 'work this week'
   fill_in 'Concerns', with: 'concerns'
   select('Week of 2012-03-19',from:'Time period')
@@ -35,7 +33,7 @@ Given /^I create a new worklog$/ do
 Then /^The last worklog in the database should be saved by me$/ do
  w = Worklog.last
  w.user_id.should == @user.id
- w.who.should == 'Name'
+ w.who.should == @user.lastname
  w.time_period.should == Date.parse('Mon, 19 Mar 2012')
  w.work_progress_this_week.should == 'work this week'
  w.concerns.should == 'concerns'
